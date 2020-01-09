@@ -1,0 +1,32 @@
+version: "3.7"
+
+networks:
+    backend:
+
+services:
+    mysql:
+        container_name: wordpress_db
+        image: "mysql:${MYSQL_TAG}"
+        volumes:
+          - ./.mysql:/var/lib/mysql
+        ports:
+          - 3306:3306
+        env_file:
+          - .env
+        networks:
+          - backend
+
+    wordpress:
+        container_name: wordpress_site
+        image: "wordpress:${WP_TAG}"
+        ports:
+          - 8000:80
+        volumes:
+          - ./src:/var/www/html
+        env_file:
+          - .env
+        networks:
+          - backend
+        depends_on:
+          - mysql
+
