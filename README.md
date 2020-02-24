@@ -2,6 +2,8 @@
 
 WordPress application running inside a docker container.
 
+If you prefer nginx over apache, you may want to clone [this repo](https://github.com/efranelas/wordpress-nginx-docker) instead.
+
 # Instructions
 
 1. After cloning this repository, create your `.env` file following the example stated in file `.env.example`.
